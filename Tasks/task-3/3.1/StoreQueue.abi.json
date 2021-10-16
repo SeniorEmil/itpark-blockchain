@@ -1,0 +1,40 @@
+{
+	"ABI version": 2,
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addToQueue",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "callTheNext",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queue",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"queue","type":"bytes[]"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
