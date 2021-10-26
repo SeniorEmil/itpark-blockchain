@@ -1,0 +1,59 @@
+{
+	"ABI version": 2,
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createToken",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"author","type":"bytes"},
+				{"name":"width","type":"uint256"},
+				{"name":"height","type":"uint256"},
+				{"name":"price","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTokenOwner",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getTokenInfo",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"tokenName","type":"bytes"},
+				{"name":"tokenAuthor","type":"bytes"},
+				{"name":"tokenWidth","type":"uint256"},
+				{"name":"tokenHeight","type":"uint256"}
+			]
+		},
+		{
+			"name": "changePrice",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"},
+				{"name":"price","type":"uint256"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
