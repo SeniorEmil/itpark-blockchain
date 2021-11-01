@@ -1,0 +1,43 @@
+{
+	"ABI version": 2,
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "callToPublic",
+			"inputs": [
+				{"name":"myAddress","type":"address"},
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "callToExternal",
+			"inputs": [
+				{"name":"myAddress","type":"address"},
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "timestamp",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"timestamp","type":"uint32"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
