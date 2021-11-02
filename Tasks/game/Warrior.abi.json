@@ -1,0 +1,77 @@
+{
+	"ABI version": 2,
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"_attackDamage","type":"uint256"},
+				{"name":"_protection","type":"uint256"},
+				{"name":"_health","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "attack",
+			"inputs": [
+				{"name":"attackedAddress","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "takeAttack",
+			"inputs": [
+				{"name":"_attackDamage","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getHealth",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getProtection",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "msgPubkey",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"msgPubkey","type":"uint256"}
+			]
+		},
+		{
+			"name": "msgAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"msgAddress","type":"address"}
+			]
+		},
+		{
+			"name": "warriorNumber",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"warriorNumber","type":"uint256"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"warriorNumber","type":"uint256"}
+	],
+	"events": [
+	]
+}
