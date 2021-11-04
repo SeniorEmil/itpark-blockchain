@@ -1,0 +1,69 @@
+{
+	"ABI version": 2,
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"_attackDamage","type":"uint256"},
+				{"name":"_protection","type":"uint256"},
+				{"name":"_health","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "takeAttack",
+			"inputs": [
+				{"name":"_attackDamage","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "attack",
+			"inputs": [
+				{"name":"attackedAddress","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAttackDamage",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getHealth",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getProtection",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "warriorNumber",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"warriorNumber","type":"uint256"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"warriorNumber","type":"uint256"}
+	],
+	"events": [
+	]
+}
