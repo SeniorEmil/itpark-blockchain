@@ -10,9 +10,11 @@ struct Purchase {
 }
 
 struct ShoppingSammari {
-    uint32 completeCount;
-    uint32 incompleteCount;
-    uint32 paymentAmount;
+   //  uint32 completeCount;
+   //  uint32 incompleteCount;
+   uint32 paidCount;
+   uint32 unpaidCount;
+   uint32 paymentAmount;
 }
 
 interface IShoppingList {

@@ -20,21 +20,21 @@ abstract contract AList {
 abstract contract AShoppingListDebot is Debot, Upgradable{
     bytes m_icon;
 
-    TvmCell m_todoCode; // TODO contract code
-    address m_address;  // TODO contract address
+    TvmCell m_shoppingListCode;
+    address m_address;  // contract address
     ShoppingSammari m_shoppingSammari;        // Statistics of incompleted and completed purchases
     uint32 m_purchaseId;    // Purchase id for update. I didn't find a way to make this var local
     string m_purchaseValue;
     uint256 m_masterPubKey; // User pubkey
     address m_msigAddress;  // User wallet address
 
-    uint32 INITIAL_BALANCE =  200000000;  // Initial TODO contract balance
+    uint32 INITIAL_BALANCE =  200000000;  // Initial contract balance
 
 
-    function setTodoCode(TvmCell code) public {
+    function setShoppingListCode(TvmCell code) public {
         require(msg.pubkey() == tvm.pubkey(), 101);
         tvm.accept();
-        m_todoCode = code;
+        m_shoppingListCode = code;
     }
 
 
@@ -77,10 +77,10 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
         if (status) {
             m_masterPubKey = res;
 
-            Terminal.print(0, "Checking if you already have a TODO list ...");
-            TvmCell deployState = tvm.insertPubkey(m_todoCode, m_masterPubKey);
+            Terminal.print(0, "Checking if you already have a Shopping list ...");
+            TvmCell deployState = tvm.insertPubkey(m_shoppingListCode, m_masterPubKey);
             m_address = address.makeAddrStd(0, tvm.hash(deployState));
-            Terminal.print(0, format( "Info: your TODO contract address is {}", m_address));
+            Terminal.print(0, format( "Info: your ShoppingList contract address is {}", m_address));
             Sdk.getAccountType(tvm.functionId(checkStatus), m_address);
 
         } else {
@@ -94,12 +94,12 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
             _getShoppingSammari(tvm.functionId(setShoppingSammari));
 
         } else if (acc_type == -1)  { // acc is inactive
-            Terminal.print(0, "You don't have a TODO list yet, so a new contract with an initial balance of 0.2 tokens will be deployed");
+            Terminal.print(0, "You don't have a Shopping list yet, so a new contract with an initial balance of 0.2 tokens will be deployed");
             AddressInput.get(tvm.functionId(creditAccount),"Select a wallet for payment. We will ask you to sign two transactions");
 
         } else  if (acc_type == 0) { // acc is uninitialized
             Terminal.print(0, format(
-                "Deploying new contract. If an error occurs, check if your TODO contract has enough tokens on its balance"
+                "Deploying new contract. If an error occurs, check if your ShoppingList contract has enough tokens on its balance"
             ));
             deploy();
 
@@ -126,7 +126,6 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
     }
 
     function onErrorRepeatCredit(uint32 sdkError, uint32 exitCode) public {
-        // TODO: check errors if needed.
         sdkError;
         exitCode;
         creditAccount(m_msigAddress);
@@ -147,7 +146,7 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
 
 
     function deploy() private view {
-            TvmCell image = tvm.insertPubkey(m_todoCode, m_masterPubKey);
+            TvmCell image = tvm.insertPubkey(m_shoppingListCode, m_masterPubKey);
             optional(uint256) none;
             TvmCell deployMsg = tvm.buildExtMsg({
                 abiVer: 2,
@@ -166,7 +165,6 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
 
 
     function onErrorRepeatDeploy(uint32 sdkError, uint32 exitCode) public view {
-        // TODO: check errors if needed.
         sdkError;
         exitCode;
         deploy();
@@ -181,10 +179,10 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You have {}/{}/{} (todo/done/total) purchases",
-                    m_shoppingSammari.incompleteCount,
-                    m_shoppingSammari.completeCount,
-                    m_shoppingSammari.completeCount + m_shoppingSammari.incompleteCount
+                "You have {}/{}/{} (unpaid/paid/total) purchases",
+                    m_shoppingSammari.unpaidCount,
+                    m_shoppingSammari.paidCount,
+                    m_shoppingSammari.paidCount + m_shoppingSammari.unpaidCount
             ),
             sep,
             [
@@ -259,7 +257,7 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
 
     function buy(uint32 index) public {
         index = index;
-        if (m_shoppingSammari.completeCount + m_shoppingSammari.incompleteCount > 0) {
+        if (m_shoppingSammari.paidCount + m_shoppingSammari.unpaidCount > 0) {
             Terminal.input(tvm.functionId(buy_), "Enter purchase number:", false);
         } else {
             Terminal.print(0, "Sorry, you have no purchases to buy");
@@ -291,7 +289,7 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
 
     function deletePurchase(uint32 index) public{
         index = index;
-        if (m_shoppingSammari.completeCount + m_shoppingSammari.incompleteCount > 0) {
+        if (m_shoppingSammari.paidCount + m_shoppingSammari.unpaidCount > 0) {
             Terminal.input(tvm.functionId(deletePurchase_), "Enter purchase number:", false);
         } else {
             Terminal.print(0, "Sorry, you have no purchases to delete");

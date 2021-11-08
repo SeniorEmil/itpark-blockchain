@@ -72,19 +72,19 @@ contract ShoppingList is IShoppingList{
     }
 
     function getShoppingSammari() public override returns (ShoppingSammari shoppingSammari) {
-        uint32 completeCount;
-        uint32 incompleteCount;
+        uint32 paidCount;
+        uint32 unpaidCount;
         uint32 paymentAmount;
 
         for((, Purchase purchase) : m_purchases) {
             if  (purchase.isDone) {
-                completeCount += purchase.quantity;
+                paidCount += purchase.quantity;
                 paymentAmount += purchase.cost;
             } else {
-                incompleteCount += purchase.quantity;
+                unpaidCount += purchase.quantity;
             }
         }
-        shoppingSammari = ShoppingSammari( completeCount, incompleteCount, paymentAmount);
+        shoppingSammari = ShoppingSammari( paidCount, unpaidCount, paymentAmount);
     }
 }
 

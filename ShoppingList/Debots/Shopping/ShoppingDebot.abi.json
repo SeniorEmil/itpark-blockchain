@@ -3,7 +3,7 @@
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
-			"name": "setTodoCode",
+			"name": "setShoppingListCode",
 			"inputs": [
 				{"name":"code","type":"cell"}
 			],
@@ -119,7 +119,7 @@
 		{
 			"name": "setShoppingSammari",
 			"inputs": [
-				{"components":[{"name":"completeCount","type":"uint32"},{"name":"incompleteCount","type":"uint32"},{"name":"paymentAmount","type":"uint32"}],"name":"shoppingSammari","type":"tuple"}
+				{"components":[{"name":"paidCount","type":"uint32"},{"name":"unpaidCount","type":"uint32"},{"name":"paymentAmount","type":"uint32"}],"name":"shoppingSammari","type":"tuple"}
 			],
 			"outputs": [
 			]

@@ -11,10 +11,10 @@ contract FillingShoppingListDebot is AShoppingListDebot {
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You have {}/{}/{} (todo/done/total) purchases",
-                    m_shoppingSammari.incompleteCount,
-                    m_shoppingSammari.completeCount,
-                    m_shoppingSammari.completeCount + m_shoppingSammari.incompleteCount
+                "You have {}/{}/{} (unpaid/paid/total) purchases",
+                    m_shoppingSammari.unpaidCount,
+                    m_shoppingSammari.paidCount,
+                    m_shoppingSammari.paidCount + m_shoppingSammari.unpaidCount
             ),
             sep,
             [
