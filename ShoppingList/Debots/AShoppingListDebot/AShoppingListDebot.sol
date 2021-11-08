@@ -51,23 +51,6 @@ abstract contract AShoppingListDebot is Debot, Upgradable{
         Terminal.input(tvm.functionId(savePublicKey),"Please enter your public key",false);
     }
 
-    /// @notice Returns Metadata about DeBot.
-    function getDebotInfo() public functionID(0xDEB) override view returns(
-        string name, string version, string publisher, string key, string author,
-        address support, string hello, string language, string dabi, bytes icon
-    ) {
-        name = "ShoppingList DeBot";
-        version = "1.0.0";
-        publisher = "Emil Ibraimov";
-        key = "Shopping list manager";
-        author = "Emil Ibraimov";
-        support = address(0);
-        hello = "Hi, i'm a ShoppingList DeBot.";
-        language = "en";
-        dabi = m_debotAbi.get();
-        icon = m_icon;
-    }
-
     function getRequiredInterfaces() public view override returns (uint256[] interfaces) {
         return [ Terminal.ID, Menu.ID, AddressInput.ID ];
     }

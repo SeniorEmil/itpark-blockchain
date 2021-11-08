@@ -45,11 +45,11 @@
 			]
 		},
 		{
-			"name": "getStat",
+			"name": "getShoppingSammari",
 			"inputs": [
 			],
 			"outputs": [
-				{"components":[{"name":"completeCount","type":"uint32"},{"name":"incompleteCount","type":"uint32"},{"name":"paymentAmount","type":"uint32"}],"name":"shoppingSammari","type":"tuple"}
+				{"components":[{"name":"paidCount","type":"uint32"},{"name":"unpaidCount","type":"uint32"},{"name":"paymentAmount","type":"uint32"}],"name":"shoppingSammari","type":"tuple"}
 			]
 		}
 	],
