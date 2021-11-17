@@ -8,6 +8,10 @@ const thievesArmy = (arrResurs, loadCapacity) => {
     sum += item
   })
 
+  if(sum <= loadCapacity){
+    return arrResurs
+  }
+
   arrResurs.forEach(function (item) {
     index = sum / item
     coefficients.push(Math.round(index))
@@ -29,6 +33,12 @@ const thievesArmy = (arrResurs, loadCapacity) => {
       return 1
     }
   })
+
+  if (maxSum < loadCapacity){
+    id = coefficients.indexOf(tempCoeff[0])
+    let maxId = arrLooted.indexOf(Math.max.apply(null, arrLooted))
+    arrLooted[maxId] +=  loadCapacity - maxSum
+  }
 
   return arrLooted
 }
